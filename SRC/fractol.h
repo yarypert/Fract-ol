@@ -6,7 +6,7 @@
 /*   By: yarypert <yarypert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 07:57:52 by yarypert          #+#    #+#             */
-/*   Updated: 2017/03/22 10:03:02 by yarypert         ###   ########.fr       */
+/*   Updated: 2017/03/22 11:14:44 by yarypert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 # include "../MLX_FILES/mlx/mlx.h"
 # include "./Libft/libft.h"
 
-# define SIZE_X 800
-# define SIZE_Y 800
+# define SIZE_X 1000
+# define SIZE_Y 1000
 # define T ft_putchar('a')
 
 typedef	struct	s_ptr
@@ -52,6 +52,10 @@ void	menu(t_ptr *ptr);
 void	line_init(t_init *i, t_ptr ptr);
 void	mlx_pix_img(t_ptr *ptr,int x , int y, int color);
 void	line_menu(t_ptr *ptr, int color);
+void	menu_border(t_ptr *ptr);
+void	border_heart(t_ptr *ptr);
+void	border_heart2(t_ptr *ptr);
+void	border_halo(t_ptr *ptr);
 void	Mandelbrot(void);
 void	Julia(void);
 

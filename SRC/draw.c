@@ -6,7 +6,7 @@
 /*   By: yarypert <yarypert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 08:14:33 by yarypert          #+#    #+#             */
-/*   Updated: 2017/03/22 10:16:44 by yarypert         ###   ########.fr       */
+/*   Updated: 2017/03/22 13:21:44 by yarypert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ void	dispatch(char *str, t_ptr ptr)
 	/*if (ft_strcmp(str, "Mandelbrot") == 0)
 		Mandelbrot();
 	else if (ft_strcmp(str, "Julia") == 0)
-		Julia();*/
+		Julia();
+	else
+		ft_error("usage");
+		*/
 	draw(str, ptr);
 }
