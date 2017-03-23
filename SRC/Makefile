@@ -2,9 +2,9 @@ NAME = Fractol
 
 COMPILM = gcc -lmlx -framework OpenGL -framework AppKit
 
-SRCS = main.c draw.c hook.c menu.c fractals.c
+SRCS = main.c draw.c hook.c menu.c mandelbrot.c julia.c
 
-OBJ = main.o draw.o hook.o menu.o fractals.o
+OBJ = main.o draw.o hook.o menu.o mandelbrot.o julia.o
 
 INCLUDES = -I ./
 

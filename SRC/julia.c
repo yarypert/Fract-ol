@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractals.c                                         :+:      :+:    :+:   */
+/*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yarypert <yarypert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/22 09:59:52 by yarypert          #+#    #+#             */
-/*   Updated: 2017/03/22 10:04:38 by yarypert         ###   ########.fr       */
+/*   Created: 2017/03/23 12:38:45 by yarypert          #+#    #+#             */
+/*   Updated: 2017/03/23 13:50:11 by yarypert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	Mandelbrot(void)
-{
-	ft_putendl("Mandelbrot");
-}
-
-void	Julia(void)
+void	julia(t_ptr *ptr)
 {
 	ft_putendl("Julia");
 }

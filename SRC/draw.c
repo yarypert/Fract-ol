@@ -6,13 +6,13 @@
 /*   By: yarypert <yarypert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 08:14:33 by yarypert          #+#    #+#             */
-/*   Updated: 2017/03/22 13:21:44 by yarypert         ###   ########.fr       */
+/*   Updated: 2017/03/23 17:44:53 by yarypert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	draw(char *str, t_ptr ptr)
+void	draw(char *str, t_ptr ptr,int select)
 {
 	ptr.mlx = mlx_init();
 	ptr.win = mlx_new_window(ptr.mlx, SIZE_X, SIZE_Y, str);
@@ -22,7 +22,12 @@ void	draw(char *str, t_ptr ptr)
 	ptr.bts = mlx_get_data_addr(ptr.img, &(ptr.bpp), &(ptr.size_line),
 			&(ptr.endian));
 	menu(&ptr);
+	if (select == 1)
+		mandelbrot(&ptr);
+	else if (select == 2)
+		julia(&ptr);
 	mlx_put_image_to_window(ptr.mlx, ptr.win, ptr.img, 0, 0);
+	menu_strings(&ptr);
 	mlx_loop(ptr.mlx);
 }
 
@@ -46,12 +51,10 @@ void	mlx_pix_img(t_ptr *ptr, int x, int y, int color)
 void	dispatch(char *str, t_ptr ptr)
 {
 	ptr.init = 0;
-	/*if (ft_strcmp(str, "Mandelbrot") == 0)
-		Mandelbrot();
+	if (ft_strcmp(str, "Mandelbrot") == 0)
+		draw(str,ptr,1);
 	else if (ft_strcmp(str, "Julia") == 0)
-		Julia();
+		draw(str,ptr,2);
 	else
-		ft_error("usage");
-		*/
-	draw(str, ptr);
+		ft_error("USAGE");
 }

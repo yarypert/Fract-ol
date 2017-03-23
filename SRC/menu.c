@@ -6,7 +6,7 @@
 /*   By: yarypert <yarypert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 08:40:25 by yarypert          #+#    #+#             */
-/*   Updated: 2017/03/22 11:54:20 by yarypert         ###   ########.fr       */
+/*   Updated: 2017/03/23 13:39:02 by yarypert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void	menu(t_ptr *ptr)
 {
-	ptr->xy = (int *)malloc(sizeof(int) * 2);
-	ptr->xy2 = (int *)malloc(sizeof(int) * 2);
+	if(!(ptr->xy = (int *)malloc(sizeof(int) * 2)) ||
+			!(ptr->xy2 = (int *)malloc(sizeof(int) * 2)))
+		return ;
 	menu_border(ptr);
 }
 
@@ -54,88 +55,46 @@ void	line_init(t_init *i, t_ptr ptr)
 
 void	menu_border(t_ptr *ptr)
 {
-/*	int i;
-	int color;
-
-	i = -5;
-	color = 0x00FF;
-	while (i <= 5)
-	{
-		ptr->xy[0] = 0;
-		ptr->xy[1] = SIZE_Y / 4 + i;
-		ptr->xy2[0] = SIZE_X;
-		ptr->xy2[1] = SIZE_Y / 4 + i;
-		line_menu(ptr, color);
-		if (i < 0)
-			color -= 0x001000;
-		if(i > 0)
-			color += 0x001000;
-		i++;
-
-	}*/
-	border_halo(ptr);
-	border_heart2(ptr);
-	border_heart(ptr);
-}
-
-void	border_halo(t_ptr *ptr)
-{
-	int i;
-	int color;
-
-	i = -20;
-	color = 0x000000;
-	while (i <= 20)
-	{
-		ptr->xy[0] = 0;
-		ptr->xy[1] = SIZE_Y / 4 + i;
-		ptr->xy2[0] = SIZE_X;
-		ptr->xy2[1] = SIZE_Y / 4 + i;
-		if (i < 0)
-			color += 0x100000;
-		if(i > 0)
-			color -= 0x100000;
-		line_menu(ptr, color);
-		i++;
-	}
-}
-
-void	border_heart2(t_ptr *ptr)
-{
 	int i;
 	int color;
 
 	i = -5;
-	color = 0xFF8800;
+	color = 0xFF99000;
 	while (i <= 5)
 	{
 		ptr->xy[0] = 0;
 		ptr->xy[1] = SIZE_Y / 4 + i;
-		ptr->xy2[0] = SIZE_X;
+		ptr->xy2[0] = SIZE_X / 4 + i;
 		ptr->xy2[1] = SIZE_Y / 4 + i;
-		if (i < 0)
-			color -= 0x002500;
-		if(i > 0)
-			color += 0x002500;
 		line_menu(ptr, color);
-		i++;
+		ptr->xy[0] = SIZE_X / 4 + i;
+		ptr->xy[1] = 0;
+		ptr->xy2[0] = SIZE_X / 4 + i;
+		ptr->xy2[1] = SIZE_Y / 4 + i;
+		line_menu(ptr, color);
+		color -=  0x003300;
+		i += 5;
 	}
 }
 
-void	border_heart(t_ptr *ptr)
+void	menu_strings(t_ptr *ptr)
 {
-	int i;
-	int color;
-
-	i = -3;
-	color = 0xFFFFFF;
-	while (i <= 3)
-	{
-		ptr->xy[0] = 0;
-		ptr->xy[1] = SIZE_Y / 4 + i;
-		ptr->xy2[0] = SIZE_X;
-		ptr->xy2[1] = SIZE_Y / 4 + i;
-		line_menu(ptr, color);
-		i++;
-	}
+	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 1), 0xFFFFFF, "1   >>   Mandelbrot");
+	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 2), 0xFFFFFF, "2   >>   Julia");
+	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 3), 0xFFFFFF, "3   >>   ?????????");
+	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 4), 0xFFFFFF, "1   >>   ?????????");
+	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 5), 0xFFFFFF, "2   >>   ?????????");
+	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 6), 0xFFFFFF, "3   >>   ?????????");
+	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 7), 0xFFFFFF, "1   >>   ?????????");
+	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 8), 0xFFFFFF, "2   >>   ?????????");
+	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 9), 0xFFFFFF, "3   >>   ?????????");
+	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 1), 0xFF2500, "1   >>");
+	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 2), 0xFF2500, "2   >>");
+	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 3), 0xFF2500, "3   >>");
+	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 4), 0xFF2500, "1   >>");
+	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 5), 0xFF2500, "2   >>");
+	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 6), 0xFF2500, "3   >>");
+	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 7), 0xFF2500, "1   >>");
+	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 8), 0xFF2500, "2   >>");
+	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 9), 0xFF2500, "3   >>");
 }

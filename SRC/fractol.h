@@ -6,7 +6,7 @@
 /*   By: yarypert <yarypert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 07:57:52 by yarypert          #+#    #+#             */
-/*   Updated: 2017/03/22 11:14:44 by yarypert         ###   ########.fr       */
+/*   Updated: 2017/03/23 13:49:41 by yarypert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,10 @@ typedef	struct	s_init
 
 int		key_hook(int keycode, t_ptr *ptr);
 int		exit_cross(void);
+
+void	menu_strings(t_ptr *ptr);
 void	dispatch(char *str, t_ptr ptr);
-void	draw(char *str, t_ptr ptr);
+void	draw(char *str, t_ptr ptr,int select);
 void	menu(t_ptr *ptr);
 void	line_init(t_init *i, t_ptr ptr);
 void	mlx_pix_img(t_ptr *ptr,int x , int y, int color);
@@ -56,7 +58,7 @@ void	menu_border(t_ptr *ptr);
 void	border_heart(t_ptr *ptr);
 void	border_heart2(t_ptr *ptr);
 void	border_halo(t_ptr *ptr);
-void	Mandelbrot(void);
-void	Julia(void);
+void	mandelbrot(t_ptr *ptr);
+void	julia(t_ptr *ptr);
 
 #endif
