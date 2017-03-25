@@ -23,9 +23,13 @@ void	draw(char *str, t_ptr ptr,int select)
 			&(ptr.endian));
 	menu(&ptr);
 	if (select == 1)
-		mandelbrot(&ptr);
+		mandelbrot(&ptr, 1);
 	else if (select == 2)
 		julia(&ptr);
+	else if (select == 3)
+		mandelbrot(&ptr, -1);
+	else if (select == 4)
+		mandelbrot(&ptr, -1);
 	mlx_put_image_to_window(ptr.mlx, ptr.win, ptr.img, 0, 0);
 	menu_strings(&ptr);
 	mlx_loop(ptr.mlx);
@@ -50,11 +54,18 @@ void	mlx_pix_img(t_ptr *ptr, int x, int y, int color)
 
 void	dispatch(char *str, t_ptr ptr)
 {
-	ptr.init = 0;
-	if (ft_strcmp(str, "Mandelbrot") == 0)
+	if (ft_strcmp(str, "Mandelbrot") == 0 || ft_strcmp(str, "1") == 0)
 		draw(str,ptr,1);
-	else if (ft_strcmp(str, "Julia") == 0)
+	else if (ft_strcmp(str, "Julia") == 0 || ft_strcmp(str, "2") == 0)
 		draw(str,ptr,2);
+	else if (ft_strcmp(str, "Trihorn") == 0 || ft_strcmp(str, "3") == 0)
+		draw(str,ptr,3);
+	else if (ft_strcmp(str, "BurningShips") == 0 || ft_strcmp(str, "4") == 0)
+		{
+		ptr.burn = 1;
+		draw(str,ptr,3);
+		}
 	else
-		ft_error("USAGE");
+		ft_error("usage : <Fractal Name>\n1 >> Mandelbrot\n2 >> Julia\n\
+			3 >> Trihorn\n4 >> BurningShips\n");
 }

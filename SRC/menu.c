@@ -79,22 +79,20 @@ void	menu_border(t_ptr *ptr)
 
 void	menu_strings(t_ptr *ptr)
 {
-	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 1), 0xFFFFFF, "1   >>   Mandelbrot");
-	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 2), 0xFFFFFF, "2   >>   Julia");
-	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 3), 0xFFFFFF, "3   >>   ?????????");
-	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 4), 0xFFFFFF, "1   >>   ?????????");
-	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 5), 0xFFFFFF, "2   >>   ?????????");
-	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 6), 0xFFFFFF, "3   >>   ?????????");
-	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 7), 0xFFFFFF, "1   >>   ?????????");
-	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 8), 0xFFFFFF, "2   >>   ?????????");
-	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 9), 0xFFFFFF, "3   >>   ?????????");
-	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 1), 0xFF2500, "1   >>");
-	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 2), 0xFF2500, "2   >>");
-	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 3), 0xFF2500, "3   >>");
-	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 4), 0xFF2500, "1   >>");
-	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 5), 0xFF2500, "2   >>");
-	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 6), 0xFF2500, "3   >>");
-	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 7), 0xFF2500, "1   >>");
-	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 8), 0xFF2500, "2   >>");
-	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 9), 0xFF2500, "3   >>");
+	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 1),
+	0xFFFFFF, "1   >>   Mandelbrot");
+	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 2),
+	0xFFFFFF, "2   >>   Julia");
+	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 3),
+	0xFFFFFF, "3   >>   Trihorn");
+	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 4),
+	0xFFFFFF, "4   >>   BurningShips");
+	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 1),
+	0xFF2500, "1   >>");
+	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 2),
+	0xFF2500, "2   >>");
+	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 3),
+	0xFF2500, "3   >>");
+	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 4),
+	0xFF2500, "1   >>");
 }

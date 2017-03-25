@@ -16,11 +16,13 @@ int		 main(int argc, char **argv)
 {
 	t_ptr ptr;
 
-	ptr.init = 0;
-
+	ptr.iter = 512;
+	ptr.color_shift = 75;
+	ptr.zoom = 4;
 	if (argc == 2)
 		dispatch(argv[1], ptr);
 	else
-		ft_error("usage : <Fractal Name>\n>>  Mandelbrot\n>> Julia\n");
+		ft_error("usage : <Fractal Name>\n1 >> Mandelbrot\n2 >> Julia\n\
+			3 >> Trihorn\n4 >> BurningShips\n");
 	return (0);
 }

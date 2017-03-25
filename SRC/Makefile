@@ -1,5 +1,7 @@
 NAME = Fractol
 
+COMPILL = -L/home/sholyu/Bureau/42/Fractol/minilibx -lm -lmlx -lXext -lX11
+
 COMPILM = gcc -lmlx -framework OpenGL -framework AppKit
 
 SRCS = main.c draw.c hook.c menu.c mandelbrot.c julia.c
@@ -22,6 +24,15 @@ $(NAME):
 	@mkdir -p TMP
 	@mv $(OBJ) TMP
 
+linux:
+	@echo "\033[38;5;28m===FDF : Compilation for Linux...\033[0m"
+	@make -C Libft
+	@gcc $(FLAGS) -c $(SRCS) $(INCLUDES)
+	@gcc $(OBJ) $(COMPILL) $(LIB) $(INCLUDES) -o $(NAME)
+	@mkdir -p TMP
+	@mv $(OBJ) TMP
+
+
 .PHONY: clean
 clean:
 	@make clean -C Libft
@@ -31,5 +42,7 @@ fclean: clean
 	@make fclean -C Libft
 	@rm -rf TMP
 	@rm -rf $(NAME)
+
+relinux: fclean linux
 
 re: fclean all

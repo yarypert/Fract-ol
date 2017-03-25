@@ -14,6 +14,7 @@
 # define FRACTOL_H
 # include "../MLX_FILES/mlx/mlx.h"
 # include "./Libft/libft.h"
+# include <math.h>
 
 # define SIZE_X 1000
 # define SIZE_Y 1000
@@ -21,8 +22,6 @@
 
 typedef	struct	s_ptr
 {
-	int init;
-
 	int		size_line;
 	int		bpp;
 	char	*bts;
@@ -32,7 +31,34 @@ typedef	struct	s_ptr
 	void	*img;
 	int		*xy;
 	int		*xy2;
+	int		iter;
+	int		color_shift;
+	float	zoom;
+	int		burn;
+
+
+	int		init;
 }				t_ptr;
+
+typedef struct	s_cmp
+{
+	float	oldre;
+	float	oldim;
+	float	newre;
+	float	newim;
+	float	pi;
+	float	tmp;
+	float	pr;
+	float	re;
+	float	im;
+	float	cst;
+	float	cst2;
+	int		i;
+	int		x;
+	int		y;
+	int		color;
+}				t_cmp;
+
 
 typedef	struct	s_init
 {
@@ -46,6 +72,7 @@ typedef	struct	s_init
 
 int		key_hook(int keycode, t_ptr *ptr);
 int		exit_cross(void);
+int		mandelbrot_calculate(t_ptr *ptr, int x,int y, int horn);
 
 void	menu_strings(t_ptr *ptr);
 void	dispatch(char *str, t_ptr ptr);
@@ -58,7 +85,7 @@ void	menu_border(t_ptr *ptr);
 void	border_heart(t_ptr *ptr);
 void	border_heart2(t_ptr *ptr);
 void	border_halo(t_ptr *ptr);
-void	mandelbrot(t_ptr *ptr);
+void	mandelbrot(t_ptr *ptr, int horn);
 void	julia(t_ptr *ptr);
 
 #endif
