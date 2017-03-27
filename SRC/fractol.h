@@ -6,7 +6,7 @@
 /*   By: yarypert <yarypert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 07:57:52 by yarypert          #+#    #+#             */
-/*   Updated: 2017/03/23 13:49:41 by yarypert         ###   ########.fr       */
+/*   Updated: 2017/03/27 18:28:58 by yarypert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 # include "../MLX_FILES/mlx/mlx.h"
 # include "./Libft/libft.h"
 # include <math.h>
+# include <stdio.h>
 
-# define SIZE_X 1000
-# define SIZE_Y 1000
+# define SIZE_X 1200
+# define SIZE_Y 1200
 # define T ft_putchar('a')
 
 typedef	struct	s_ptr
@@ -32,12 +33,21 @@ typedef	struct	s_ptr
 	int		*xy;
 	int		*xy2;
 	int		iter;
-	int		color_shift;
 	float	zoom;
 	int		burn;
-
-
-	int		init;
+	double	jucst;
+	double	jucst2;
+	int		coordX;
+	int		coordY;
+	int		old_coordX;
+	int		old_coordY;
+	int		select;
+	char*	param;
+	int		colors[26];
+	float	offsetX;
+	float	offsetY;
+	int		drugs;
+	int		toggle;
 }				t_ptr;
 
 typedef struct	s_cmp
@@ -51,8 +61,6 @@ typedef struct	s_cmp
 	float	pr;
 	float	re;
 	float	im;
-	float	cst;
-	float	cst2;
 	int		i;
 	int		x;
 	int		y;
@@ -71,12 +79,19 @@ typedef	struct	s_init
 }				t_init;
 
 int		key_hook(int keycode, t_ptr *ptr);
+int		key_hook2(int keycode, t_ptr *ptr);
 int		exit_cross(void);
 int		mandelbrot_calculate(t_ptr *ptr, int x,int y, int horn);
+int		frc_mouse_manager(int x, int y, t_ptr *ptr);
+int		refresh(t_ptr *ptr);
+int		mouse(int keycode, int x, int y, t_ptr *ptr);
+int		colors_sel(int iter, t_ptr *ptr);
+int		colors1_12(int iter, t_ptr *ptr);
+int		colors13_25(int iter, t_ptr *ptr);
 
 void	menu_strings(t_ptr *ptr);
 void	dispatch(char *str, t_ptr ptr);
-void	draw(char *str, t_ptr ptr,int select);
+void	draw(t_ptr ptr);
 void	menu(t_ptr *ptr);
 void	line_init(t_init *i, t_ptr ptr);
 void	mlx_pix_img(t_ptr *ptr,int x , int y, int color);

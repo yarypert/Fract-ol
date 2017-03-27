@@ -6,7 +6,7 @@
 /*   By: yarypert <yarypert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 08:07:51 by yarypert          #+#    #+#             */
-/*   Updated: 2017/03/23 17:46:58 by yarypert         ###   ########.fr       */
+/*   Updated: 2017/03/27 18:17:13 by yarypert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,16 @@ int		 main(int argc, char **argv)
 {
 	t_ptr ptr;
 
-	ptr.iter = 512;
-	ptr.color_shift = 75;
-	ptr.zoom = 4;
+	ptr.toggle = 0;
+	ptr.drugs = 0;
+	ptr.jucst = -0.726667;
+	ptr.jucst2 = -0.206667;
+	ptr.iter = 64;
+	ptr.zoom = 4.0;
+	ptr.offsetX = -2.0;
+	ptr.offsetY = -2.0;
+	ptr.old_coordX = SIZE_X / 2;
+	ptr.old_coordY = SIZE_Y / 2;
 	if (argc == 2)
 		dispatch(argv[1], ptr);
 	else

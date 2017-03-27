@@ -6,7 +6,7 @@
 /*   By: yarypert <yarypert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 08:14:33 by yarypert          #+#    #+#             */
-/*   Updated: 2017/03/27 18:59:13 by yarypert         ###   ########.fr       */
+/*   Updated: 2017/03/27 18:57:53 by yarypert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	draw(t_ptr ptr)
 		mandelbrot(&ptr, -1);
 	else if (ptr.select == 4)
 		mandelbrot(&ptr, -1);
-	menu(&ptr);
+	menu(ptr);
 	mlx_put_image_to_window(ptr.mlx, ptr.win, ptr.img, 0, 0);
 	menu_strings(&ptr);
 	mlx_loop(ptr.mlx);

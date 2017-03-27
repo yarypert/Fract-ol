@@ -6,7 +6,7 @@
 /*   By: yarypert <yarypert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 08:40:25 by yarypert          #+#    #+#             */
-/*   Updated: 2017/03/23 13:39:02 by yarypert         ###   ########.fr       */
+/*   Updated: 2017/03/27 19:09:11 by yarypert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,22 +58,16 @@ void	menu_border(t_ptr *ptr)
 	int i;
 	int color;
 
-	i = -5;
-	color = 0xFF99000;
-	while (i <= 5)
+	i = 0;
+	color = 0x000000;
+	while (i < (SIZE_Y / 50) * 6)
 	{
 		ptr->xy[0] = 0;
-		ptr->xy[1] = SIZE_Y / 4 + i;
-		ptr->xy2[0] = SIZE_X / 4 + i;
-		ptr->xy2[1] = SIZE_Y / 4 + i;
+		ptr->xy[1] = i;
+		ptr->xy2[0] = SIZE_X / 4;
+		ptr->xy2[1] = i;
 		line_menu(ptr, color);
-		ptr->xy[0] = SIZE_X / 4 + i;
-		ptr->xy[1] = 0;
-		ptr->xy2[0] = SIZE_X / 4 + i;
-		ptr->xy2[1] = SIZE_Y / 4 + i;
-		line_menu(ptr, color);
-		color -=  0x003300;
-		i += 5;
+		i++;
 	}
 }
 
@@ -87,12 +81,13 @@ void	menu_strings(t_ptr *ptr)
 	0xFFFFFF, "3   >>   Trihorn");
 	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 4),
 	0xFFFFFF, "4   >>   BurningShips");
+
 	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 1),
-	0xFF2500, "1   >>");
+	0xFF0000, "1   >>");
 	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 2),
-	0xFF2500, "2   >>");
+	0xFF0000, "2   >>");
 	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 3),
-	0xFF2500, "3   >>");
+	0xFF0000, "3   >>");
 	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 4),
-	0xFF2500, "1   >>");
+	0xFF0000, "4   >>");
 }

@@ -4,9 +4,9 @@ COMPILL = -L/home/sholyu/Bureau/42/Fractol/minilibx -lm -lmlx -lXext -lX11
 
 COMPILM = gcc -lmlx -framework OpenGL -framework AppKit
 
-SRCS = main.c draw.c hook.c menu.c mandelbrot.c julia.c
+SRCS = main.c draw.c hook.c menu.c mandelbrot.c julia.c colors.c
 
-OBJ = main.o draw.o hook.o menu.o mandelbrot.o julia.o
+OBJ = main.o draw.o hook.o menu.o mandelbrot.o julia.o colors.o
 
 INCLUDES = -I ./
 
@@ -17,7 +17,7 @@ FLAGS = -Wall -Werror -Wextra
 all: $(NAME)
 
 $(NAME):
-	@echo "\033[38;5;14m===FDF : Compilation for Mac...\033[0m"
+	@echo "\033[38;5;14m===Fractol : Compilation for Mac...\033[0m"
 	@make -C Libft
 	@gcc $(FLAGS) -c $(SRCS) $(INCLUDES)
 	@$(COMPILM) $(OBJ) $(LIB) $(INCLUDES) -o $(NAME)
@@ -25,7 +25,7 @@ $(NAME):
 	@mv $(OBJ) TMP
 
 linux:
-	@echo "\033[38;5;28m===FDF : Compilation for Linux...\033[0m"
+	@echo "\033[38;5;28m===Fractol : Compilation for Linux...\033[0m"
 	@make -C Libft
 	@gcc $(FLAGS) -c $(SRCS) $(INCLUDES)
 	@gcc $(OBJ) $(COMPILL) $(LIB) $(INCLUDES) -o $(NAME)
