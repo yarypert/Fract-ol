@@ -6,7 +6,7 @@
 /*   By: yarypert <yarypert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 08:23:10 by yarypert          #+#    #+#             */
-/*   Updated: 2017/03/27 18:59:38 by yarypert         ###   ########.fr       */
+/*   Updated: 2017/03/30 20:01:50 by yarypert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,120 +15,118 @@
 int		key_hook(int keycode, t_ptr *ptr)
 {
 	if (keycode == 53 || keycode == 65307)
-		exit(0);
-	if (keycode == 123)
-		ptr->offsetX -= 0.1;
-	if (keycode == 124)
-		ptr->offsetX += 0.1;
-	if (keycode == 125)
-		ptr->offsetY -= 0.1;
-	if (keycode == 126)
-		ptr->offsetY += 0.1;
-	if (keycode == 2)
-		ptr->drugs++;
-	if (keycode == 1)
 	{
-		if(ptr->toggle == 1)
-			ptr->toggle = 0;
-		else if (ptr->toggle == 0)
-			ptr->toggle = 1;
+		system("killall afplay");
+		exit(0);
+	}
+	if (keycode == 78)
+	{
+		ptr->iter = ptr->iter - 3;
+		if (ptr->iter < 0)
+			ptr->iter = 0;
+	}
+	if (keycode == 69)
+		ptr->iter = ptr->iter + 3;
+	if (keycode == 48)
+	{
+		if (ptr->menu_toggle == 1)
+			ptr->menu_toggle = 0;
+		else if (ptr->menu_toggle == 0)
+			ptr->menu_toggle = 1;
 	}
 	key_hook2(keycode, ptr);
+	key_hook3(keycode, ptr);
+	key_hook4(keycode, ptr);
 	refresh(ptr);
 	return (0);
 }
 
 int		key_hook2(int keycode, t_ptr *ptr)
 {
-	if (keycode == 83)
+	if (keycode == 1)
+	{
+		if (ptr->toggle == 1)
+			ptr->toggle = 0;
+		else if (ptr->toggle == 0)
+			ptr->toggle = 1;
+	}
+	if (keycode == 18)
 	{
 		mlx_destroy_window(ptr->mlx, ptr->win);
-		dispatch("1", *ptr);
+		dispatch("Mandelbrot", *ptr);
 	}
-	if (keycode == 84)
+	if (keycode == 19)
 	{
 		mlx_destroy_window(ptr->mlx, ptr->win);
-		dispatch("2", *ptr);
+		dispatch("Julia", *ptr);
 	}
-	if (keycode == 85)
+	if (keycode == 20)
 	{
 		mlx_destroy_window(ptr->mlx, ptr->win);
-		dispatch("3", *ptr);
+		dispatch("Trihorn", *ptr);
 	}
-	if (keycode == 86)
-	{
-		mlx_destroy_window(ptr->mlx, ptr->win);
-		dispatch("4", *ptr);
-	}
-	return(0);
+	return (0);
 }
 
+int		key_hook3(int keycode, t_ptr *ptr)
+{
+	if (keycode == 21)
+	{
+		mlx_destroy_window(ptr->mlx, ptr->win);
+		dispatch("BurningShips", *ptr);
+	}
+	if (keycode == 23)
+	{
+		mlx_destroy_window(ptr->mlx, ptr->win);
+		dispatch("Judelbrotia", *ptr);
+	}
+	if (keycode == 22)
+	{
+		mlx_destroy_window(ptr->mlx, ptr->win);
+		dispatch("Spike", *ptr);
+	}
+	if (keycode == 26)
+	{
+		mlx_destroy_window(ptr->mlx, ptr->win);
+		dispatch("Rose", *ptr);
+	}
+	return (0);
+}
 
+int		key_hook4(int keycode, t_ptr *ptr)
+{
+	if (keycode == 123)
+		ptr->offset_x += 0.1;
+	if (keycode == 124)
+		ptr->offset_x -= 0.1;
+	if (keycode == 125)
+		ptr->offset_y -= 0.1;
+	if (keycode == 126)
+		ptr->offset_y += 0.1;
+	if (keycode == 2)
+		ptr->drugs++;
+	if (keycode == 28)
+	{
+		mlx_destroy_window(ptr->mlx, ptr->win);
+		dispatch("Rorschach", *ptr);
+	}
+	return (0);
+}
 
-
-
-int		mouse(int	keycode, int x, int y, t_ptr *ptr)
+int		mouse(int keycode, int x, int y, t_ptr *ptr)
 {
 	if (keycode == 4 || keycode == 2)
 	{
-		ptr->offsetX -= x * ptr->zoom / SIZE_X;
-		ptr->offsetY -= y * ptr->zoom / SIZE_Y;
+		ptr->offset_x -= x * ptr->zoom / SIZE_X;
+		ptr->offset_y -= y * ptr->zoom / SIZE_Y;
 		ptr->zoom *= 2;
 	}
 	if (keycode == 5 || keycode == 1)
 	{
-		ptr->offsetX += x * ptr->zoom / 2 / SIZE_X;
-		ptr->offsetY += y * ptr->zoom / 2 / SIZE_Y;
+		ptr->offset_x += x * ptr->zoom / 2 / SIZE_X;
+		ptr->offset_y += y * ptr->zoom / 2 / SIZE_Y;
 		ptr->zoom /= 2;
 	}
 	refresh(ptr);
-	return(0);
-}
-
-
-int		frc_mouse_manager(int x, int y, t_ptr *ptr)
-{
-	if (ptr->toggle == 0)
-	{
-	ptr->coordX = x;
-	ptr->coordY = y;
-	ptr->jucst = ((1.0 / (SIZE_X / 2)) * ptr->coordX) - 1.0;
-	ptr->jucst2 = ((1.0 / (SIZE_Y / 2)) * ptr->coordY) - 1.0;
-		if (x > SIZE_X)
-			ptr->jucst = 1;
-		if (x < 0)
-			ptr->jucst = -1;
-		if (y < 0)
-			ptr->jucst2 = -1;
-		if (y > SIZE_Y)
-			ptr->jucst2 = 1;
-	}
-	refresh(ptr);
 	return (0);
-}
-
-int		exit_cross(void)
-{
-	exit(0);
-	return (0);
-}
-
-int		refresh(t_ptr *ptr)
-{
-	mlx_destroy_image(ptr->mlx, ptr->img);
-	ptr->img = mlx_new_image(ptr->mlx , SIZE_X, SIZE_Y);
-	ptr->bts = mlx_get_data_addr(ptr->img, &(ptr->bpp), &(ptr->size_line),
-			&(ptr->endian));
-	if (ptr->select == 1)
-		mandelbrot(ptr, 1);
-	else if (ptr->select == 2)
-		julia(ptr);
-	else if(ptr->select == 3)
-		mandelbrot(ptr, -1);
-	else if(ptr->select == 4)
-		mandelbrot(ptr, -1);
-	menu_border(ptr);
-	mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->img,0 ,0);
-	menu_strings(ptr);
-	return(0);
 }

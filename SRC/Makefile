@@ -4,9 +4,9 @@ COMPILL = -L/home/sholyu/Bureau/42/Fractol/minilibx -lm -lmlx -lXext -lX11
 
 COMPILM = gcc -lmlx -framework OpenGL -framework AppKit
 
-SRCS = main.c draw.c hook.c menu.c mandelbrot.c julia.c colors.c
+SRCS = main.c draw.c dispatch.c hook.c hook2.c menu.c menu2.c mandelbrot.c julia.c rorschach.c rose.c colors.c
 
-OBJ = main.o draw.o hook.o menu.o mandelbrot.o julia.o colors.o
+OBJ = main.o draw.o dispatch.o hook.o hook2.o menu.o menu2.o mandelbrot.o julia.o rorschach.o rose.o colors.o
 
 INCLUDES = -I ./
 

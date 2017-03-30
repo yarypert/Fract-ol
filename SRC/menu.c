@@ -6,7 +6,7 @@
 /*   By: yarypert <yarypert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 08:40:25 by yarypert          #+#    #+#             */
-/*   Updated: 2017/03/27 19:09:11 by yarypert         ###   ########.fr       */
+/*   Updated: 2017/03/30 20:13:45 by yarypert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 void	menu(t_ptr *ptr)
 {
-	if(!(ptr->xy = (int *)malloc(sizeof(int) * 2)) ||
+	if (!(ptr->xy = (int *)malloc(sizeof(int) * 2)) ||
 			!(ptr->xy2 = (int *)malloc(sizeof(int) * 2)))
-		return ;
+		ft_error("no memory available!");
 	menu_border(ptr);
 }
 
-void	line_menu(t_ptr *ptr,int color)
+void	line_menu(t_ptr *ptr, int color)
 {
 	t_init i;
 
 	line_init(&i, *ptr);
 	while (1)
 	{
-		mlx_pix_img(ptr, ptr->xy[0], ptr->xy[1],color);
+		mlx_pix_img(ptr, ptr->xy[0], ptr->xy[1], color);
 		if (ptr->xy[0] == ptr->xy2[0] && ptr->xy[1] == ptr->xy2[1])
 			return ;
 		i.e2 = i.err;
@@ -60,7 +60,7 @@ void	menu_border(t_ptr *ptr)
 
 	i = 0;
 	color = 0x000000;
-	while (i < (SIZE_Y / 50) * 6)
+	while (i < (SIZE_Y / 50) * 10)
 	{
 		ptr->xy[0] = 0;
 		ptr->xy[1] = i;
@@ -69,25 +69,24 @@ void	menu_border(t_ptr *ptr)
 		line_menu(ptr, color);
 		i++;
 	}
+	menu2_border(ptr);
 }
 
-void	menu_strings(t_ptr *ptr)
+void	menu2_border(t_ptr *ptr)
 {
-	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 1),
-	0xFFFFFF, "1   >>   Mandelbrot");
-	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 2),
-	0xFFFFFF, "2   >>   Julia");
-	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 3),
-	0xFFFFFF, "3   >>   Trihorn");
-	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 4),
-	0xFFFFFF, "4   >>   BurningShips");
+	int i;
+	int color;
 
-	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 1),
-	0xFF0000, "1   >>");
-	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 2),
-	0xFF0000, "2   >>");
-	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 3),
-	0xFF0000, "3   >>");
-	mlx_string_put(ptr->mlx, ptr->win, SIZE_X / 50, ((SIZE_Y / 50) * 4),
-	0xFF0000, "4   >>");
+	i = 0;
+	color = 0x000000;
+	while (i < (SIZE_Y / 50) * 11)
+	{
+		ptr->xy[0] = SIZE_Y;
+		ptr->xy[1] = i;
+		ptr->xy2[0] = SIZE_Y - SIZE_X / 3.5;
+		ptr->xy2[1] = i;
+		line_menu(ptr, color);
+		i++;
+	}
+	menu3_border(ptr);
 }
